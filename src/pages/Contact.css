@@ -1,0 +1,79 @@
+.contact-intro {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.contact-intro p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.contact-form-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contact-form-wrapper {
+  background: var(--bg-card);
+  padding: 2.5rem;
+  border-radius: 15px;
+  border: 1px solid var(--bg-hover);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  background: var(--bg-primary);
+  border: 2px solid var(--bg-hover);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-secondary);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .contact-form-wrapper {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,373 @@
+.skills.section .section-title {
+  margin-bottom: 1.5rem;
+}
+
+.skills-intro {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.skills-intro p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.skills-slider {
+  margin-bottom: 4rem;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--bg-hover);
+}
+
+.category-tabs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.category-tabs::-webkit-scrollbar-track {
+  background: var(--bg-hover);
+  border-radius: 10px;
+}
+
+.category-tabs::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+.category-tab {
+  flex: 1;
+  min-width: 200px;
+  padding: 1.2rem 1.5rem;
+  background: var(--bg-card);
+  border: 2px solid var(--bg-hover);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .category-tab {
+  color: white;
+}
+
+.category-tab:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+}
+
+.category-tab.active {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  border-color: transparent;
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+}
+
+.tab-title {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  color: inherit;
+}
+
+.skills-slider-content {
+  overflow: hidden;
+  border-radius: 15px;
+  background: var(--bg-card);
+  padding: 2rem;
+  min-height: 400px;
+}
+
+.skills-slider-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skills-slide {
+  min-width: 100%;
+  padding: 0 1rem;
+}
+
+.slide-title {
+  font-size: 2rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  background: var(--bg-primary);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: default;
+  border: 2px solid transparent;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+}
+
+.skill-icon {
+  font-size: 3rem;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+/* Style for non-colored icons in dark/light themes */
+.skill-icon.devicon-express-original,
+.skill-icon.devicon-nextjs-plain,
+.skill-icon.devicon-flask-original,
+.skill-icon.devicon-linux-plain {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .skill-icon.devicon-express-original,
+[data-theme="dark"] .skill-icon.devicon-nextjs-plain,
+[data-theme="dark"] .skill-icon.devicon-flask-original,
+[data-theme="dark"] .skill-icon.devicon-linux-plain {
+  color: var(--primary-color);
+}
+
+.skill-item:hover .skill-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.skill-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.slider-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.slider-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--bg-hover);
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-btn:hover {
+  border-color: var(--primary-color);
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.slider-indicators {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-hover);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.indicator:hover {
+  background: var(--primary-color);
+  transform: scale(1.2);
+}
+
+.indicator.active {
+  background: var(--primary-color);
+  width: 30px;
+  border-radius: 6px;
+}
+
+.tools-section {
+  margin-top: 4rem;
+}
+
+.tools-section h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tool-badge {
+  background: var(--bg-card);
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  border: 2px solid var(--bg-hover);
+  transition: all 0.3s ease;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tool-badge:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+}
+
+.tool-icon {
+  font-size: 2.5rem;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+/* Style for non-colored tool icons */
+.tool-icon.devicon-github-original {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .tool-icon.devicon-github-original {
+  color: var(--primary-color);
+}
+
+.tool-badge:hover .tool-icon {
+  transform: scale(1.15);
+}
+
+.tool-name {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+@media (max-width: 968px) {
+  .category-tabs {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .category-tab {
+    min-width: 160px;
+  }
+
+  .skills-list {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .slide-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .category-tab {
+    min-width: 140px;
+    padding: 1rem 0.75rem;
+  }
+
+  .tab-title {
+    font-size: 0.9rem;
+  }
+
+  .skills-slider-content {
+    padding: 1.5rem 1rem;
+    min-height: 350px;
+  }
+
+  .skills-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .skill-item {
+    padding: 1rem 0.75rem;
+  }
+
+  .skill-icon {
+    font-size: 2.5rem;
+  }
+
+  .skill-name {
+    font-size: 0.85rem;
+  }
+
+  .slide-title {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .slider-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .slider-navigation {
+    gap: 1rem;
+  }
+
+  .tools-grid {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  }
+
+  .tool-badge {
+    padding: 0.75rem;
+  }
+
+  .tool-icon {
+    font-size: 2rem;
+  }
+
+  .tool-name {
+    font-size: 0.85rem;
+  }
+}
