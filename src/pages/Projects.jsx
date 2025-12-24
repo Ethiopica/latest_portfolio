@@ -18,7 +18,7 @@ const Projects = () => {
         image: '/front.png',
       tags: ['React', 'React-redux', 'CSS', 'Stripe'],
       category: 'fullstack',
-      link: 'https://unelma-front-7us30xzyd-ethiopicas-projects.vercel.app/',
+      link: 'https://unelma-front-end.vercel.app/',
       github: 'https://github.com/Ethiopica/unelma-front-end.git',
     },
     {
