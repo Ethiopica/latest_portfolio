@@ -326,7 +326,7 @@
 }
 
 .marquee-heading {
-  font-family: "Sora", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 2rem;
   text-align: center;
   margin-bottom: 3rem;
@@ -410,7 +410,7 @@
 }
 
 .marquee-item span {
-  font-family: "Sora", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--text-secondary);

@@ -34,7 +34,7 @@
   color: var(--text-secondary);
   border: none;
   border-radius: 25px;
-  font-family: "Sora", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 0.9rem;
   transition: all 0.3s ease;
@@ -203,7 +203,7 @@
 }
 
 .project-content h3 {
-  font-family: "Sora", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 0.75rem;

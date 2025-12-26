@@ -1,12 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import emailjs from '@emailjs/browser'
 import './Contact.css'
 
+// EmailJS Configuration - Replace these with your actual IDs from emailjs.com
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID'
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID'
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+
 const Contact = () => {
+  const formRef = useRef()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: '',
+  })
+  const [status, setStatus] = useState({
+    sending: false,
+    sent: false,
+    error: null,
   })
 
   const handleChange = (e) => {
@@ -16,12 +28,29 @@ const Contact = () => {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! I will get back to you soon.')
-    setFormData({ name: '', email: '', subject: '', message: '' })
+    setStatus({ sending: true, sent: false, error: null })
+
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        EMAILJS_PUBLIC_KEY
+      )
+      
+      setStatus({ sending: false, sent: true, error: null })
+      setFormData({ name: '', email: '', subject: '', message: '' })
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setStatus({ sending: false, sent: false, error: null })
+      }, 5000)
+    } catch (error) {
+      console.error('EmailJS error:', error.text || error.message || error)
+      setStatus({ sending: false, sent: false, error: error.text || 'Failed to send message. Please try again.' })
+    }
   }
 
   return (
@@ -41,7 +70,7 @@ const Contact = () => {
 
         <div className="contact-form-container">
           <div className="contact-form-wrapper">
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
@@ -94,8 +123,24 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn btn-primary btn-full">
-                Send Message
+              {status.error && (
+                <div className="form-status error">
+                  ❌ {status.error}
+                </div>
+              )}
+
+              {status.sent && (
+                <div className="form-status success">
+                  ✅ Thank you! Your message has been sent successfully.
+                </div>
+              )}
+
+              <button 
+                type="submit" 
+                className="btn btn-primary btn-full"
+                disabled={status.sending}
+              >
+                {status.sending ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
