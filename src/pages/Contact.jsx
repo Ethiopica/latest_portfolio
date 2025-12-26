@@ -1,20 +1,14 @@
-import React, { useState, useRef } from 'react'
-import emailjs from '@emailjs/browser'
+import React, { useState } from 'react'
 import './Contact.css'
 
-// EmailJS Configuration - Replace these with your actual IDs from emailjs.com
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID'
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID'
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
-
 const Contact = () => {
-  const formRef = useRef()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: '',
   })
+
   const [status, setStatus] = useState({
     sending: false,
     sent: false,
@@ -33,23 +27,33 @@ const Contact = () => {
     setStatus({ sending: true, sent: false, error: null })
 
     try {
-      await emailjs.sendForm(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        EMAILJS_PUBLIC_KEY
-      )
-      
-      setStatus({ sending: false, sent: true, error: null })
-      setFormData({ name: '', email: '', subject: '', message: '' })
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setStatus({ sending: false, sent: false, error: null })
-      }, 5000)
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: '7f6d89f4-0467-46fa-a5c0-3243e974f39a',
+          ...formData,
+        }),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setStatus({ sending: false, sent: true, error: null })
+        setFormData({ name: '', email: '', subject: '', message: '' })
+
+        setTimeout(() => {
+          setStatus({ sending: false, sent: false, error: null })
+        }, 5000)
+      } else {
+        throw new Error(result.message)
+      }
     } catch (error) {
-      console.error('EmailJS error:', error.text || error.message || error)
-      setStatus({ sending: false, sent: false, error: error.text || 'Failed to send message. Please try again.' })
+      setStatus({
+        sending: false,
+        sent: false,
+        error: 'Failed to send message. Please try again.',
+      })
     }
   }
 
@@ -60,90 +64,70 @@ const Contact = () => {
           Get In <span className="gradient-text">Touch</span>
         </h1>
 
-        <div className="contact-intro">
-          <p>
-            Have a project in mind or just want to chat? Feel free to reach out!
-            I'm always open to discussing new projects, creative ideas, or opportunities
-            to be part of your vision.
-          </p>
-        </div>
-
         <div className="contact-form-container">
-          <div className="contact-form-wrapper">
-            <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  required
-                />
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Subject</label>
+              <input
+                type="text"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Message</label>
+              <textarea
+                name="message"
+                rows="8"
+                value={formData.message}
+                onChange={handleChange}
+                required
+              ></textarea>
+            </div>
+
+            {status.error && (
+              <div className="form-status error">❌ {status.error}</div>
+            )}
+
+            {status.sent && (
+              <div className="form-status success">
+                ✅ Message sent successfully!
               </div>
+            )}
 
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="your.email@example.com"
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="subject">Subject</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  placeholder="What's this about?"
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell me about your project..."
-                  rows="8"
-                  required
-                ></textarea>
-              </div>
-
-              {status.error && (
-                <div className="form-status error">
-                  ❌ {status.error}
-                </div>
-              )}
-
-              {status.sent && (
-                <div className="form-status success">
-                  ✅ Thank you! Your message has been sent successfully.
-                </div>
-              )}
-
-              <button 
-                type="submit" 
-                className="btn btn-primary btn-full"
-                disabled={status.sending}
-              >
-                {status.sending ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
-          </div>
+            <button
+              type="submit"
+              className="btn btn-primary btn-full"
+              disabled={status.sending}
+            >
+              {status.sending ? 'Sending...' : 'Send Message'}
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -151,3 +135,4 @@ const Contact = () => {
 }
 
 export default Contact
+
