@@ -24,6 +24,19 @@ const Blog = () => {
 
   const blogPosts = [
     {
+      id: 4,
+      title: 'Full Stack Web Development Degree',
+      excerpt:
+        'Completed the Full Stack Web Development program at Business College Helsinki, covering modern front-end and back-end development with React, Next.js, TypeScript, Node.js, PHP, Laravel, MySQL, Drupal, and WordPress.',
+      badge: '🎓 Degree Completed',
+      completionDate: 'May 2026',
+      date: 'June 2026',
+      readTime: '3 min read',
+      category: 'Education',
+      image: '/helsinki.JPG',
+      certificate: '/degree.pdf',
+    },
+    {
       id: 1,
       title: 'Getting Started with DevOps on AWS',
       excerpt:

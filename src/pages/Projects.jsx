@@ -67,6 +67,17 @@ const Projects = () => {
     },
     {
       id: 6,
+      title: 'Book Management System',
+      description:
+        'Book Management System using TypeScript to manage book records efficiently, including adding, editing, searching, and organizing books through a clean, responsive interface. .',
+      image: '/book.png',
+      tags: ['TypeScript', 'Supabase', 'CSS3'],
+      category: 'fullstack',
+      link: 'https://book-mgmt-ashy.vercel.app/',
+      github: 'https://github.com/Ethiopica/Book-MGMT.git',
+    },
+    {
+      id: 7,
       title: 'Countries App',
       description:
         'A modern countries information app built to showcase global data using the REST Countries API.Users can browse, search, and filter through all nations with real-time details like population, capital, region, subregion, currencies, and languages — displayed in an elegant, responsive UI.',

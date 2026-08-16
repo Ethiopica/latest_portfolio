@@ -14,10 +14,7 @@ const About = () => {
           <div className="about-text">
             <h2>Full Stack Web Developer</h2>
             <p>
-              Aspiring Full Stack Web Developer graduating soon from Business College Helsinki, with a solid practical foundation in modern web development. Proficient in front-end technologies including JavaScript, TypeScript, React, Next.js, React-Redux, HTML, and CSS, and experienced in back-end development using PHP, Laravel, and MySQL. Familiar with content management systems such as Drupal and WordPress. Motivated to apply technical skills, learn from real-world projects, and contribute effectively as a Full Stack Developer Intern.
-            </p>
-            <p>
-              I am currently seeking a Full-Stack Developer Internship where I can apply my skills, learn from experienced developers, and contribute to real-world projects.
+              Full Stack Web Developer graduated from Business College Helsinki on May 30, 2026, with hands-on experience from a Junior Software Developer internship at Unelma Platforms Ltd. Delivered React utility payment features, redesigned Unelma Mail with a custom WordPress theme, and built the Unelma Mail WordPress plugin and Gmail Campaign Extension. Also experienced with PHP, Laravel, MySQL, Drupal, and AWS. Motivated to apply technical skills on real-world projects and grow as a Full Stack Developer.
             </p>
           </div>
         </div>
@@ -31,8 +28,8 @@ const About = () => {
             <div className="timeline-item current">
               <div className="timeline-dot"></div>
               <div className="timeline-content">
-                <span className="timeline-badge">Current</span>
-                <h3>Student: Full Stack Web Development</h3>
+                <span className="timeline-badge">Compeleted</span>
+                <h3>Education - Full Stack Web Development</h3>
                 <p className="timeline-company">Business College Helsinki</p>
                 <p className="timeline-location">📍 Pasila, Helsinki</p>
                 <p className="timeline-date">Jan 2025 - May 2026</p>
@@ -40,6 +37,30 @@ const About = () => {
                   {['React', 'Next.js', 'TypeScript', 'Node.js', 'MySQL', 'Laravel', 'PHP', 'Drupal', 'WordPress'].map((tech, i) => (
                     <span key={i} className="tech-tag">{tech}</span>
                   ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Junior Software Developer Internship - Unelma Platforms */}
+            <div className="timeline-item">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <h3>Junior Software Developer</h3>
+                <p className="timeline-company">Unelma Platforms Ltd</p>
+                <p className="timeline-location">📍 Internship</p>
+                <p className="timeline-date">Feb 4 – May 4, 2026</p>
+                <ul className="timeline-responsibilities">
+                  <li>Delivered a variety of product tickets, including utility payment systems built with React</li>
+                  <li>Redesigned the entire Unelma Mail page by creating a new WordPress theme</li>
+                  <li>Built the Unelma Mail WordPress plugin and the Unelma Mail Campaign Extension for Gmail</li>
+                </ul>
+                <div className="timeline-tech">
+                  <span className="tech-tag">React</span>
+                  <span className="tech-tag">WordPress</span>
+                  <span className="tech-tag">PHP</span>
+                  <span className="tech-tag">Gmail Extension</span>
+                  <span className="tech-tag">Laravel</span>
+                  <span className="tech-tag">MySQL</span>
                 </div>
               </div>
             </div>
